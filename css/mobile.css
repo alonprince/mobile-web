@@ -1,0 +1,351 @@
+@charset "UTF-8";
+/**
+ * 
+ * @authors _Phishing (you@example.org)
+ * @date    2014-06-05 11:31:21
+ * @version $Id$
+ */
+
+/* 清除内外边距 */
+body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, /* structural elements 结构元素 */
+dl, dt, dd, ul, ol, li, /* list elements 列表元素 */
+pre, /* text formatting elements 文本格式元素 */
+fieldset, lengend, button, input, textarea, /* form elements 表单元素 */
+th, td { /* table elements 表格元素 */
+margin: 0;
+padding: 0;
+}
+
+/* 设置默认字体 */
+body,
+button, input, select, textarea { /* for ie */
+/*font: 12px/1 Tahoma, Helvetica, Arial, "宋体", sans-serif;*/
+font: 12px/1 "Microsoft yahei", Tahoma, Helvetica, Arial, "\5b8b\4f53", sans-serif; /* 用 ascii 字符表示，使得在任何编码下都无问题 */
+}
+
+h1 { font-size: 18px; /* 18px / 12px = 1.5 */ font-weight: 200;}
+h2 { font-size: 16px; font-weight: 200;}
+h3 { font-size: 14px; font-weight: 200;}
+h4, h5, h6 { font-size: 100%; font-weight: 200;}
+
+address, cite, dfn, em, var { font-style: normal; } /* 将斜体扶正 */
+code, kbd, pre, samp, tt { font-family: "Courier New", Courier, monospace; } /* 统一等宽字体 */
+small { font-size: 12px; } /* 小于 12px 的中文很难阅读，让 small 正常化 */
+
+/* 重置列表元素 */
+ul, ol { list-style: none; }
+
+/* 重置文本格式元素 */
+a { text-decoration: none; }
+
+abbr[title], acronym[title] { /* 注：1.ie6 不支持 abbr; 2.这里用了属性选择符，ie6 下无效果 */
+border-bottom: 1px dotted;
+cursor: help;
+}
+
+q:before, q:after { content: ''; }
+
+/* 重置表单元素 */
+legend { color: #000; } /* for ie6 */
+fieldset, img { border: none; } /* img 搭车：让链接里的 img 无边框 */
+/* 注：optgroup 无法扶正 */
+button, input, select, textarea {
+font-size: 100%; /* 使得表单元素在 ie 下能继承字体大小 */
+}
+
+/* 重置表格元素 */
+table {
+border-collapse: collapse;
+border-spacing: 0;
+}
+
+
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+html,body {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    background: #333;
+}
+.wrap {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    -webkit-perspective: 1200px;
+    -moz-perspective: 1200px;
+    -ms-perspective: 1200px;
+    perspective: 1200px;
+    overflow: hidden;
+}
+.divBox {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+.navBox {
+    position: absolute;
+    bottom: 0px;
+    /*padding-bottom: 30px;*/
+    height: 60px;
+    left: 0px;
+    width: 100%;
+    z-index: 9;
+}
+.item {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    visibility: hidden;
+    overflow: hidden;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+}
+.item > img {
+    display: block;
+    margin: 0 auto;
+    height: 100%;
+}
+.current {
+    visibility: visible;
+    z-index: 1;
+}
+.item:last-child {
+    z-index: 999;
+}
+/* 上滑 */
+.pushTop {
+    -webkit-transform-origin: 50% 0%;
+    -webkit-animation: rotatePushTop .8s both ease;
+    -moz-transform-origin: 50% 0%;
+    -moz-animation: rotatePushTop .8s both ease;
+    transform-origin: 50% 0%;
+    animation: rotatePushTop .8s both ease;
+}
+.pushBottom {
+    -webkit-transform-origin: 50% 100%;
+    -webkit-animation: rotatePushBottom .8s both ease;
+    -moz-transform-origin: 50% 100%;
+    -moz-animation: rotatePushBottom .8s both ease;
+    transform-origin: 50% 100%;
+    animation: rotatePushBottom .8s both ease;
+}
+.fromTop {
+    -webkit-animation: moveFromTop .6s ease both;
+    -moz-animation: moveFromTop .6s ease both;
+    animation: moveFromTop .6s ease both;
+}
+.fromBottom {
+    -webkit-animation: moveFromBottom .6s ease both;
+    -moz-animation: moveFromBottom .6s ease both;
+    animation: moveFromBottom .6s ease both;
+}
+
+.item.reverse:first-child {
+    z-index: 7;
+}
+.item.reverse:nth-child(2) {
+    z-index: 6;
+}
+.item.reverse:nth-child(3) {
+    z-index: 5;
+}
+.item.reverse:nth-child(4) {
+    z-index: 4;
+}
+.item.reverse:nth-child(5) {
+    z-index: 3;
+}
+.item.reverse:nth-child(6) {
+    z-index: 2;
+}
+
+.item:first-child {
+    background: #81B5D7;
+}
+.item:nth-child(2) {
+    background: #2D75AA;
+}
+.item:nth-child(3) {
+    background: #284257;
+}
+.item:nth-child(4) {
+    background: #DEC283;
+}
+.item:nth-child(5) {
+    background: #8E5E49;
+}
+.item:nth-child(6) {
+    background: #634437;
+}
+.item:nth-child(7) {
+    background: #E99E4B;
+    z-index: 9999;
+}
+
+#downBtn {
+    background: url('../img/downBtn.png') left top no-repeat;
+    display: block;
+    width: 80%;
+    height: 64px;
+    background-size: 100%;
+    position: absolute;
+    bottom: 2%;
+    z-index: 9999;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    transform: translateX(-50%);
+
+}
+
+.navButton {
+    -webkit-animation-name: navButton;
+    -o-animation-name: navButton;
+    animation-name: navButton;
+
+    -webkit-animation-duration: 1.5s;
+    -o-animation-duration: 1.5s;
+    animation-duration: 1.5s;
+
+    -webkit-animation-timing-function: ease-in;
+    -o-animation-timing-function: ease-in;
+    animation-timing-function: ease-in;
+
+    -webkit-animation-iteration-count: infinite;
+    -o-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+    opacity: 0.8;
+    position: relative;
+}
+
+.navButton:before {
+    content: '';
+    width: 30px;
+    height: 5px;
+    background: #fff;
+    position: absolute;
+    left: 50%;
+    top: 40px;
+    border-radius: 5px;
+    -webkit-transform: rotate(30deg);
+    -ms-transform: rotate(30deg);
+    -o-transform: rotate(30deg);
+    transform: rotate(30deg);
+    margin-left: -23px;
+
+}
+.navButton:after {
+    content: '';
+    width: 30px;
+    height: 5px;
+    top: 40px;
+    background: #fff;
+    position: absolute;
+    left: 50%;
+    border-radius: 5px;
+    -webkit-transform: rotate(-30deg);
+    -ms-transform: rotate(-30deg);
+    -o-transform: rotate(-30deg);
+    transform: rotate(-30deg);
+}
+
+/* ================================ 动画 ==================================== */
+/* 导航的小按钮 */
+@-webkit-keyframes navButton {
+    0%,30% {
+        opacity: 0;
+        -webkit-transform: translateY(-40px);
+    }
+    80% {
+        opacity: 1;
+        -webkit-transform: translateY(0);
+    }
+    100% {
+        opacity: 0.2;
+        -webkit-transform: translateY(20px);
+    }
+}
+@-moz-keyframes navButton {
+    0%,30% {
+        opacity: 0;
+        -moz-transform: translateY(-40px);
+    }
+    80% {
+        opacity: 1;
+        -moz-transform: translateY(0);
+    }
+    100% {
+        opacity: 0.2;
+        -moz-transform: translateY(20px);
+    }
+}
+@keyframes navButton {
+    0%,30% {
+        opacity: 0;
+        transform: translateY(-40px);
+    }
+    80% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+}
+
+
+
+
+/* 动画 */
+@-webkit-keyframes rotatePushTop {
+    to { opacity: 0; -webkit-transform: rotateX(-90deg); }
+}
+@-moz-keyframes rotatePushTop {
+    to { opacity: 0; -moz-transform: rotateX(-90deg); }
+}
+@keyframes rotatePushTop {
+    to { opacity: 0; transform: rotateX(-90deg); }
+}
+
+@-webkit-keyframes rotatePushBottom {
+    to { opacity: 0; -webkit-transform: rotateX(90deg); }
+}
+@-moz-keyframes rotatePushBottom {
+    to { opacity: 0; -moz-transform: rotateX(90deg); }
+}
+@keyframes rotatePushBottom {
+    to { opacity: 0; transform: rotateX(90deg); }
+}
+@-webkit-keyframes moveFromBottom {
+    from { -webkit-transform: translateY(100%); }
+}
+@-moz-keyframes moveFromBottom {
+    from { -moz-transform: translateY(100%); }
+}
+@keyframes moveFromBottom {
+    from { transform: translateY(100%); }
+}
+@-webkit-keyframes moveFromTop {
+    from { -webkit-transform: translateY(-100%); }
+}
+@-moz-keyframes moveFromTop {
+    from { -moz-transform: translateY(-100%); }
+}
+@keyframes moveFromTop {
+    from { transform: translateY(-100%); }
+}

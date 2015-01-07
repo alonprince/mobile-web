@@ -1,0 +1,74 @@
+*{padding: 0; margin: 0;}
+.top{background: url(../img/top_bg.png) repeat-x; height: 40px; width: 100%; background-size: 100%;}
+.top img{vertical-align: middle; margin-left: 20px; margin-top: 8px;}
+.head{background: url(../img/banner_bg.png) no-repeat top center; height: 268px; background-size: 320px 268px; position: relative; overflow: hidden;}
+.download{text-align: center; position: absolute; bottom: 0; left: 0; width: 100%; height: 60px; display: none; border-top: 1px dotted rgb(197, 194, 179);}
+#download_ios{height: 112px; overflow: hidden;}
+#download_ios div,#download_ios_again div {text-align: center;}
+#download_ios_again{height: 112px; overflow: hidden;}
+.down_title{width: 100%; height: 20px; line-height: 20px; padding-top: 5px; color: #9A9A9A; font-family: 'microsoft yahei'; font-size: 12px;}
+.app_store_btn{background: url(../img/download_bg.png) 0 -52px no-repeat; display: block; width: 80px; height: 24px; background-size: 100%;}
+.app_store b{float: left; color: #9a9a9a; line-height: 24px; padding-left: 10px; font-family: 'microsoft yahei'; font-weight: normal; font-size: 14px;}
+a.down_link{background-image: url(../img/download_bg.png); background-repeat: no-repeat; background-size: 100%; display: inline-block; width: 80px; height: 24px;}
+a.company_btn{background-position: 0 -104px;}
+a.appstore_btn{background: none;}
+a.android_btn{background-position: 0 -78px; margin: 18px auto;}
+.content img{width: 100%;}
+.download_again{height: 60px; border-bottom: 1px dotted #c5c2b3; display: none; text-align: center;}
+.download p{text-align: center; line-height: 60px; font-family: 'microsoft yahei';}
+.download_again p{text-align: center; line-height: 60px; font-family: 'microsoft yahei';}
+
+.felx_box{-webkit-box-flex: 1; display: block;}
+.felx_box.arrow{background: url(../img/arrow_bg.png) no-repeat center center;}
+
+
+#popweixin {
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    position:fixed;
+    z-index:1000;
+    background:rgba(0,0,0,.5);
+    top:0;
+    left:0;
+    display:none;
+}
+#popweixin .tip {
+    width:100%;
+    background:#fff;
+    z-index:1001;
+}
+.top2bottom {
+    -webkit-animation:top2bottom 1.2s ease;
+    -moz-animation:top2bottom 1.2s ease;
+    -o-animation:top2bottom 1.2s ease;
+    animation:top2bottom 1.2s ease;
+    -webkit-animation-fill-mode:backwards;
+    -moz-animation-fill-mode:backwards;
+    -o-animation-fill-mode:backwards;
+    animation-fill-mode:backwards
+}
+.animate-delay-1 {
+    -webkit-animation-delay:1s;
+    -moz-animation-delay:1s;
+    -o-animation-delay:1s;
+    animation-delay:1s
+}
+@-webkit-keyframes top2bottom {
+    0% {
+    -webkit-transform:translateY(-300px);
+    opacity:.6
+}
+100% {
+    -webkit-transform:translateY(0px);
+    opacity:1
+}
+}@keyframes top2bottom {
+    0% {
+    transform:translateY(-300px);
+    opacity:.6
+}
+100% {
+    transform:translateY(0px);
+    opacity:1
+}
